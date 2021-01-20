@@ -1,26 +1,47 @@
-This assignment exists to allow you to put together all of the knowledge about object oriented programming you have learned so far.
+### Inheritance
 
-## Prerequisites
+Inheritance is a relation between two classes. We know that all cats are mammals, and all mammals are animals. The benefit of inheritance is that classes lower down the hierarchy get the features of those higher up, but can also add specific features of their own. If all mammals breathe, then all cats breathe. In Ruby, a class can only inherit from a single other class. Some other languages support multiple inheritance, a feature that allows classes to inherit features from multiple classes, but Ruby doesn't support this.
 
-- practiced OOP concepts
-- collections/iteration
-- getting input from the user
+We can express this concept in Ruby - see `mammal.rb` program below:
 
-## The assignment
+```ruby
+class Mammal
+  def breathe
+    puts "inhale and exhale"
+  end
+end
 
-You are a farmer that wishes to keep track of the fields on your farm. You want to be able to add fields of various types - for example, corn and wheat - and to keep track of the harvest. You will be keeping track of the total amount of food your farm has ever produced.
+class Cat < Mammal
+  def speak
+    puts "Meow"
+  end
+end
 
-Each field type produces a different amount of food per hectare:
+rani = Cat.new
+rani.breathe
+rani.speak
+```
 
-- corn: 20
-- wheat: 30
+### Class Hierarchy
 
-You can add fields of choice to your farm by specifying their type (eg. "corn") and their total area in hectares (eg. 100).
+A part of the class hierarchy is as shown in the figure below.
 
-When you harvest, you must collect food from every one of your fields and record how much total food you have collected. It should display all of this information.
+![!Wikipedia](http://rubylearning.com/images/rubyclass.jpg)
 
-Sometimes a farmer wants to relax. In doing so, you will get a chance to enjoy the beauty of each one of your fields (without harvesting them).
+This diagram demonstrates that all objects inherit their methods from "Object".
 
-You can also check the status of each field, which is a more direct way of observing the status of your fields (their size and type). It should also tell you how much total food you have produced up until this point.
 
-The program should provide a list of input options whenever it asks you to enter one.
+## Exercise 1: Class Time
+
+Create a file called **people.rb**. Run your program and commit your work after each step.
+
+1. Let's start by creating two classes: one called Student and another called Instructor.
+2. The student class has a method called **learn** that outputs "I get it!".
+3. The instructor class has a method called **teach** that outputs "Everything in Ruby is an Object".
+4. Both the instructor and the student have names. We know that instructors and students are both people. Create a parent Person class that contains the attribute **name** and an initializer to set the name.
+5. Both the instructor and the student should also be able to do a greeting, like "Hi, my name is #{name}". Where's the best place to put this common method?
+5. Create an instance of Instructor whose name is "Chris" and call his greeting.
+6. Create an instance of Student whose name is "Cristina" and call her greeting.
+7. Call the teach method on your instructor instance and call the learn method on your student. Next, call the teach method on your student instance. What happens? Why doesn't that work? Leave a comment in your program explaining why.
+
+Once you're done, commit and push your work to GitHub!
